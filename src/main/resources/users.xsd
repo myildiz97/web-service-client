@@ -1,0 +1,78 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://example.com/user-management"
+           targetNamespace="http://example.com/user-management" elementFormDefault="qualified">
+
+    <xs:simpleType name="gender">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MALE"/>
+            <xs:enumeration value="FEMALE"/>
+            <xs:enumeration value="OTHER"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="role">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Customer"/>
+            <xs:enumeration value="Supplier"/>
+            <xs:enumeration value="Import Manager"/>
+            <xs:enumeration value="Admin"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="user">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="birthday" type="xs:string"/>
+            <xs:element name="gender" type="tns:gender"/>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="role" type="tns:role"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="bankName" type="xs:string"/>
+            <xs:element name="accountNo" type="xs:long"/>
+            <xs:element name="companyName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="userFaultType">
+        <xs:sequence>
+            <xs:element name="code" type="xs:int"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="userFault" type="tns:userFaultType"/>
+
+    <xs:element name="loginUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="loginUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="signupUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="tns:user"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="signupUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
