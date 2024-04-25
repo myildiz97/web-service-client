@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.ims;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +10,7 @@ public class UserConfiguration {
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setContextPath("com.example.demo.client.gen");
+        marshaller.setContextPath("com.ims.client.gen");
         return marshaller;
     }
 

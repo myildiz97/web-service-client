@@ -8,7 +8,7 @@
 		<version>2.7.6</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.example.demo</groupId>
+	<groupId>com.ims</groupId>
 	<artifactId>client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>client</name>
@@ -54,7 +54,7 @@
 				<configuration>
 					<schemaLanguage>WSDL</schemaLanguage>
 					<generateDirectory>${project.basedir}/src/main/java</generateDirectory>
-					<generatePackage>com.example.demo.client.gen</generatePackage>
+					<generatePackage>com.ims.client.gen</generatePackage>
 					<schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
 					<schemaIncludes>
 						<include>users.wsdl</include>

@@ -1,7 +1,8 @@
-package com.example.demo;
+package com.ims;
 
-import com.example.demo.client.gen.*;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
+
+import com.ims.client.gen.*;
 
 public class UserClient extends WebServiceGatewaySupport {
 

@@ -1,10 +1,11 @@
-package com.example.demo;
+package com.ims;
 
-import com.example.demo.client.gen.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import com.ims.client.gen.*;
 
 @SpringBootApplication
 public class ConsumingWebServiceApplication {
@@ -33,8 +34,7 @@ public class ConsumingWebServiceApplication {
 				SignupUserResponse response = userClient.signupUser(validUser);
 				System.out.println("***Success message:");
 				System.out.println(response.getSuccess());
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
 			}
@@ -45,8 +45,7 @@ public class ConsumingWebServiceApplication {
 				SignupUserResponse response = userClient.signupUser(validUser);
 				System.out.println("***Success message:");
 				System.out.println(response.getSuccess());
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
 			}
@@ -69,8 +68,7 @@ public class ConsumingWebServiceApplication {
 				SignupUserResponse response = userClient.signupUser(userNameShortUser);
 				System.out.println("***Success message:");
 				System.out.println(response.getSuccess());
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
 			}
@@ -93,8 +91,7 @@ public class ConsumingWebServiceApplication {
 				SignupUserResponse response = userClient.signupUser(passwordShortUser);
 				System.out.println("***Success message:");
 				System.out.println(response.getSuccess());
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
 			}
@@ -105,10 +102,9 @@ public class ConsumingWebServiceApplication {
 				LoginUserResponse response = userClient.loginUser("sdenizu", "123deniz");
 				System.out.println("***Success message:");
 				System.out.println(response.getSuccess());
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("***Error message:");
-					System.out.println(e.getMessage());
+				System.out.println(e.getMessage());
 			}
 			System.out.println("---------------");
 
@@ -117,10 +113,9 @@ public class ConsumingWebServiceApplication {
 				LoginUserResponse response = userClient.loginUser("clientTest", "client123");
 				System.out.println("***Success message:");
 				System.out.println(response.getSuccess());
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("***Error message:");
-					System.out.println(e.getMessage());
+				System.out.println(e.getMessage());
 			}
 			System.out.println("---------------");
 
@@ -129,8 +124,7 @@ public class ConsumingWebServiceApplication {
 				LoginUserResponse response = userClient.loginUser("clientTest", "1111111");
 				System.out.println("***Success message:");
 				System.out.println(response.getSuccess());
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
 			}
@@ -141,8 +135,7 @@ public class ConsumingWebServiceApplication {
 				LoginUserResponse response = userClient.loginUser("notExistedUser", "123123");
 				System.out.println("***Success message:");
 				System.out.println(response.getSuccess());
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
 			}
