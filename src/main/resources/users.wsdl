@@ -1,15 +1,24 @@
+<!-- FILEPATH: /C:/Users/pofigim/Desktop/coding/Web Services/SOAP/user-management/producing-web-service-with-soap/src/main/resources/users.wsdl -->
+<!--
+This is the Web Services Description Language (WSDL) file for the User Management Service.
+It defines the structure and behavior of the SOAP web service.
+-->
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
       xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
       xmlns:tns="http://example.com/user-management"
       targetNamespace="http://example.com/user-management"
+      xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
       name="UserManagementService">
        
+  <!-- Define the XML Schema for the user-management namespace -->
   <types>
     <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com/user-management">
       <import namespace="http://example.com/user-management" schemaLocation="users.xsd"/>
     </schema>
   </types>
   
+  <!-- Define the messages used by the operations -->
   <message name="LoginUserRequest">
     <part name="loginUserRequest" element="tns:loginUserRequest"/>
   </message>
@@ -26,6 +35,7 @@
     <part name="signupUserResponse" element="tns:signupUserResponse"/>
   </message>
 
+  <!-- Define the port type and its operations -->
   <portType name="UserManagementPortType">
     <operation name="loginUserRequest">
       <input message="tns:LoginUserRequest"/>
@@ -40,6 +50,7 @@
     </operation>
   </portType>
   
+  <!-- Define the binding for the SOAP protocol -->
   <binding name="UserManagementBinding" type="tns:UserManagementPortType">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <operation name="loginUserRequest">
@@ -64,6 +75,7 @@
     
   </binding>
   
+  <!-- Define the service and its port -->
   <service name="UserManagementService">
     <port name="UserManagementPort" binding="tns:UserManagementBinding">
       <soap:address location="http://localhost:8080/ws"/>
