@@ -1,5 +1,5 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://example.com/user-management"
-           targetNamespace="http://example.com/user-management" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://inventory-management-system.com/user-management"
+           targetNamespace="http://inventory-management-system.com/user-management" elementFormDefault="qualified">
 
     <xs:simpleType name="gender">
         <xs:restriction base="xs:string">

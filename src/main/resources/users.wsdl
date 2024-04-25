@@ -1,12 +1,12 @@
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
       xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-      xmlns:tns="http://example.com/user-management"
-      targetNamespace="http://example.com/user-management"
+      xmlns:tns="http://inventory-management-system.com/user-management"
+      targetNamespace="http://inventory-management-system.com/user-management"
       name="UserManagementService">
 
   <types>
-    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com/user-management">
-      <import namespace="http://example.com/user-management" schemaLocation="users.xsd"/>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://inventory-management-system.com/user-management">
+      <import namespace="http://inventory-management-system.com/user-management" schemaLocation="users.xsd"/>
     </schema>
   </types>
 
@@ -43,7 +43,7 @@
   <binding name="UserManagementBinding" type="tns:UserManagementPortType">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <operation name="loginUserRequest">
-      <soap:operation soapAction="http://example.com/user-management/loginUserRequest"/>
+      <soap:operation soapAction="http://inventory-management-system.com/user-management/loginUserRequest"/>
       <input>
         <soap:body use="literal"/>
       </input>
@@ -53,7 +53,7 @@
     </operation>
 
     <operation name="signupUserRequest">
-      <soap:operation soapAction="http://example.com/user-management/signupUserRequest"/>
+      <soap:operation soapAction="http://inventory-management-system.com/user-management/signupUserRequest"/>
       <input>
         <soap:body use="literal"/>
       </input>
