@@ -5,19 +5,21 @@
 // Generated on: 2024.05.15 at 11:29:49 PM TRT 
 //
 
-
 package com.ims.client.gen;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for role.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
+ * Java class for role.
+ * 
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ * <p>
+ * 
  * <pre>
  * &lt;simpleType name="role"&gt;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
@@ -42,6 +44,7 @@ public enum Role {
     IMPORT_MANAGER("Import Manager"),
     @XmlEnumValue("Admin")
     ADMIN("Admin");
+
     private final String value;
 
     Role(String v) {
@@ -53,7 +56,7 @@ public enum Role {
     }
 
     public static Role fromValue(String v) {
-        for (Role c: Role.values()) {
+        for (Role c : Role.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

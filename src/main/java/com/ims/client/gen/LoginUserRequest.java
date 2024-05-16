@@ -5,7 +5,6 @@
 // Generated on: 2024.05.15 at 11:29:49 PM TRT 
 //
 
-
 package com.ims.client.gen;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,11 +13,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -37,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "username",
-    "password"
+        "username",
+        "password"
 })
 @XmlRootElement(name = "loginUserRequest")
 public class LoginUserRequest {
@@ -52,9 +53,9 @@ public class LoginUserRequest {
      * Gets the value of the username property.
      * 
      * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *         possible object is
+     *         {@link String }
+     * 
      */
     public String getUsername() {
         return username;
@@ -64,9 +65,9 @@ public class LoginUserRequest {
      * Sets the value of the username property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *              allowed object is
+     *              {@link String }
+     * 
      */
     public void setUsername(String value) {
         this.username = value;
@@ -76,9 +77,9 @@ public class LoginUserRequest {
      * Gets the value of the password property.
      * 
      * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *         possible object is
+     *         {@link String }
+     * 
      */
     public String getPassword() {
         return password;
@@ -88,9 +89,9 @@ public class LoginUserRequest {
      * Sets the value of the password property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *              allowed object is
+     *              {@link String }
+     * 
      */
     public void setPassword(String value) {
         this.password = value;

@@ -5,7 +5,6 @@
 // Generated on: 2024.05.15 at 11:29:49 PM TRT 
 //
 
-
 package com.ims.client.gen;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,11 +13,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -36,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "user"
+        "user"
 })
 @XmlRootElement(name = "signupUserRequest")
 public class SignupUserRequest {
@@ -48,9 +49,9 @@ public class SignupUserRequest {
      * Gets the value of the user property.
      * 
      * @return
-     *     possible object is
-     *     {@link User }
-     *     
+     *         possible object is
+     *         {@link User }
+     * 
      */
     public User getUser() {
         return user;
@@ -60,9 +61,9 @@ public class SignupUserRequest {
      * Sets the value of the user property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link User }
-     *     
+     *              allowed object is
+     *              {@link User }
+     * 
      */
     public void setUser(User value) {
         this.user = value;

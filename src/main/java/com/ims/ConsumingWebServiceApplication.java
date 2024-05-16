@@ -1,50 +1,64 @@
 package com.ims;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
-import com.ims.client.gen.*;
+import com.ims.restModel.UserRecord;
+import com.ims.restModel.LoginRequest;
+import com.ims.restModel.User;
 
 @SpringBootApplication
 public class ConsumingWebServiceApplication {
+
+	private static final Logger log = LoggerFactory.getLogger(ConsumingWebServiceApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(ConsumingWebServiceApplication.class, args);
 	}
 
 	@Bean
-	CommandLineRunner lookup(UserClient userClient) throws Exception {
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
+	}
+
+	@Bean
+	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
+			try {
+				ResponseEntity<UserRecord> response = restTemplate.getForEntity("http://localhost:8080/users/10",
+						UserRecord.class);
+				log.info(response.toString());
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+
 			User validUser = new User();
 			validUser.setName("Client");
-			validUser.setBirthday("01.02.1993");
-			validUser.setAccountNo(19932);
+			validUser.setBirthDate("01.02.1993");
+			validUser.setAccountNumber(19932);
 			validUser.setBankName("Client Bankasi");
 			validUser.setCompanyName("Client Company");
 			validUser.setEmail("client@client.com");
-			validUser.setGender(Gender.MALE);
-			validUser.setRole(Role.CUSTOMER);
+			validUser.setGender(User.Gender.MALE);
+			validUser.setRole(User.UserRoles.CUSTOMER);
 			validUser.setPassword("client123");
 			validUser.setPhone("0555 555 55 55");
 			validUser.setUsername("clientTest");
-			try {
-				System.out.println("***Trying to create a new valid user.");
-				SignupUserResponse response = userClient.signupUser(validUser);
-				System.out.println("***Success message:");
-				System.out.println(response.getSuccess());
-			} catch (Exception e) {
-				System.out.println("***Error message:");
-				System.out.println(e.getMessage());
-			}
-			System.out.println("---------------");
 
 			try {
-				System.out.println("***Trying to create the same valid user again.");
-				SignupUserResponse response = userClient.signupUser(validUser);
+				System.out.println("***Trying to create a new valid user.");
+				ResponseEntity<UserRecord> response = restTemplate.postForEntity("http://localhost:8080/users/signup",
+						validUser, UserRecord.class);
 				System.out.println("***Success message:");
-				System.out.println(response.getSuccess());
+				System.out.println(response.getStatusCodeValue());
+				System.out.println(response.getBody().toString());
 			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
@@ -53,21 +67,24 @@ public class ConsumingWebServiceApplication {
 
 			User userNameShortUser = new User();
 			userNameShortUser.setName("Client");
-			userNameShortUser.setBirthday("01.02.1993");
-			userNameShortUser.setAccountNo(19932);
+			userNameShortUser.setBirthDate("01.02.1993");
+			userNameShortUser.setAccountNumber(19932);
 			userNameShortUser.setBankName("Client Bankasi");
 			userNameShortUser.setCompanyName("Client Company");
 			userNameShortUser.setEmail("client@client.com");
-			userNameShortUser.setGender(Gender.MALE);
-			userNameShortUser.setRole(Role.CUSTOMER);
+			userNameShortUser.setGender(User.Gender.MALE);
+			userNameShortUser.setRole(User.UserRoles.CUSTOMER);
 			userNameShortUser.setPassword("client123");
 			userNameShortUser.setPhone("0555 555 55 55");
 			userNameShortUser.setUsername("ab");
+
 			try {
 				System.out.println("***Trying to create a new user with a short name (ab).");
-				SignupUserResponse response = userClient.signupUser(userNameShortUser);
+				ResponseEntity<UserRecord> response = restTemplate.postForEntity("http://localhost:8080/users/signup",
+						userNameShortUser, UserRecord.class);
 				System.out.println("***Success message:");
-				System.out.println(response.getSuccess());
+				System.out.println(response.getStatusCodeValue());
+				System.out.println(response.getBody());
 			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
@@ -76,21 +93,23 @@ public class ConsumingWebServiceApplication {
 
 			User passwordShortUser = new User();
 			passwordShortUser.setName("Client");
-			passwordShortUser.setBirthday("01.02.1993");
-			passwordShortUser.setAccountNo(19932);
+			passwordShortUser.setBirthDate("01.02.1993");
+			passwordShortUser.setAccountNumber(19932);
 			passwordShortUser.setBankName("Client Bankasi");
 			passwordShortUser.setCompanyName("Client Company");
 			passwordShortUser.setEmail("client@client.com");
-			passwordShortUser.setGender(Gender.MALE);
-			passwordShortUser.setRole(Role.CUSTOMER);
+			passwordShortUser.setGender(User.Gender.MALE);
+			passwordShortUser.setRole(User.UserRoles.CUSTOMER);
 			passwordShortUser.setPassword("12345");
 			passwordShortUser.setPhone("0555 555 55 55");
 			passwordShortUser.setUsername("shortPasswordUser");
 			try {
 				System.out.println("***Trying to create a new user with a short password (12345).");
-				SignupUserResponse response = userClient.signupUser(passwordShortUser);
+				ResponseEntity<UserRecord> response = restTemplate.postForEntity("http://localhost:8080/users/signup",
+						passwordShortUser, UserRecord.class);
 				System.out.println("***Success message:");
-				System.out.println(response.getSuccess());
+				System.out.println(response.getStatusCodeValue());
+				System.out.println(response.getBody());
 			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
@@ -99,9 +118,18 @@ public class ConsumingWebServiceApplication {
 
 			try {
 				System.out.println("***Login existed user with correct password.");
-				LoginUserResponse response = userClient.loginUser("sdenizu", "123deniz");
+				String username = "sdenizu";
+				String password = "123deniz";
+				LoginRequest loginRequest = new LoginRequest();
+				loginRequest.setUsername(username);
+				loginRequest.setPassword(password);
+				ResponseEntity<String> response = restTemplate.postForEntity(
+						"http://localhost:8080/users/login",
+						loginRequest,
+						String.class);
 				System.out.println("***Success message:");
-				System.out.println(response.getSuccess());
+				System.out.println(response.getStatusCodeValue());
+				System.out.println(response.getBody());
 			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
@@ -110,9 +138,19 @@ public class ConsumingWebServiceApplication {
 
 			try {
 				System.out.println("***Login newly created user with correct password.");
-				LoginUserResponse response = userClient.loginUser("clientTest", "client123");
+				String username = validUser.getUsername();
+				String password = validUser.getPassword();
+				LoginRequest loginRequest = new LoginRequest();
+				loginRequest.setUsername(username);
+				loginRequest.setPassword(password);
+
+				ResponseEntity<String> response = restTemplate.postForEntity(
+						"http://localhost:8080/users/login",
+						loginRequest,
+						String.class);
 				System.out.println("***Success message:");
-				System.out.println(response.getSuccess());
+				System.out.println(response.getStatusCodeValue());
+				System.out.println(response.getBody());
 			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
@@ -121,9 +159,39 @@ public class ConsumingWebServiceApplication {
 
 			try {
 				System.out.println("***Login newly created user with incorrect password.");
-				LoginUserResponse response = userClient.loginUser("clientTest", "1111111");
+				String username = validUser.getUsername();
+				String password = "incorrectPassword";
+
+				LoginRequest loginRequest = new LoginRequest();
+				loginRequest.setUsername(username);
+				loginRequest.setPassword(password);
+
+				ResponseEntity<String> response = restTemplate.postForEntity(
+						"http://localhost:8080/users/login",
+						loginRequest,
+						String.class);
 				System.out.println("***Success message:");
-				System.out.println(response.getSuccess());
+				System.out.println(response.getStatusCodeValue());
+				System.out.println(response.getBody());
+			} catch (Exception e) {
+				System.out.println("***Error message:");
+				System.out.println(e.getMessage());
+			}
+			System.out.println("---------------");
+
+			try {
+				System.out.println("***Login a user that already logged in.");
+				String username = "mehmetyildiz";
+				String password = "mehmet123";
+
+				LoginRequest loginRequest = new LoginRequest();
+				loginRequest.setUsername(username);
+				loginRequest.setPassword(password);
+				ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/users/login", loginRequest,
+						String.class);
+				System.out.println("***Success message:");
+				System.out.println(response.getStatusCodeValue());
+				System.out.println(response.getBody());
 			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
@@ -132,14 +200,53 @@ public class ConsumingWebServiceApplication {
 
 			try {
 				System.out.println("***Login a user that does not exists.");
-				LoginUserResponse response = userClient.loginUser("notExistedUser", "123123");
+				String username = "nonExistedUser";
+				String password = "incorrectPassword";
+
+				LoginRequest loginRequest = new LoginRequest();
+				loginRequest.setUsername(username);
+				loginRequest.setPassword(password);
+
+				ResponseEntity<String> response = restTemplate.postForEntity(
+						"http://localhost:8080/users/login",
+						loginRequest,
+						String.class);
 				System.out.println("***Success message:");
-				System.out.println(response.getSuccess());
+				System.out.println(response.getStatusCodeValue());
+				System.out.println(response.getBody());
 			} catch (Exception e) {
 				System.out.println("***Error message:");
 				System.out.println(e.getMessage());
 			}
+			System.out.println("---------------");
+
+			try {
+				System.out.println("***Logout a user that logged in.");
+				ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/users/1/logout",
+						String.class);
+				System.out.println("***Success message:");
+				System.out.println(response.getStatusCodeValue());
+				System.out.println(response.getBody());
+			} catch (Exception e) {
+				System.out.println("***Error message:");
+				System.out.println(e.getMessage());
+			}
+			System.out.println("---------------");
+
+			try {
+				System.out.println("***Logout a user that did not logged in.");
+				ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/users/1/logout",
+						String.class);
+				System.out.println("***Success message:");
+				System.out.println(response.getStatusCodeValue());
+				System.out.println(response.getBody());
+			} catch (Exception e) {
+				System.out.println("***Error message:");
+				System.out.println(e.getMessage());
+			}
+			System.out.println("---------------");
 
 		};
 	}
+
 }

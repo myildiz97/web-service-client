@@ -5,7 +5,6 @@
 // Generated on: 2024.05.15 at 11:29:49 PM TRT 
 //
 
-
 package com.ims.client.gen;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,11 +13,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -36,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "success"
+        "success"
 })
 @XmlRootElement(name = "loginUserResponse")
 public class LoginUserResponse {
@@ -48,9 +49,9 @@ public class LoginUserResponse {
      * Gets the value of the success property.
      * 
      * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *         possible object is
+     *         {@link String }
+     * 
      */
     public String getSuccess() {
         return success;
@@ -60,9 +61,9 @@ public class LoginUserResponse {
      * Sets the value of the success property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *              allowed object is
+     *              {@link String }
+     * 
      */
     public void setSuccess(String value) {
         this.success = value;

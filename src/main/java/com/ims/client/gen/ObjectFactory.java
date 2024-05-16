@@ -5,7 +5,6 @@
 // Generated on: 2024.05.15 at 11:29:49 PM TRT 
 //
 
-
 package com.ims.client.gen;
 
 import javax.xml.bind.JAXBElement;
@@ -13,28 +12,30 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the com.ims.client.gen package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the com.ims.client.gen package.
+ * <p>
+ * An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups. Factory methods for each of these are
  * provided in this class.
  * 
  */
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _UserFault_QNAME = new QName("http://inventory-management-system.com/user-management", "userFault");
+    private final static QName _UserFault_QNAME = new QName("http://inventory-management-system.com/user-management",
+            "userFault");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.ims.client.gen
+     * Create a new ObjectFactory that can be used to create new instances of schema
+     * derived classes for package: com.ims.client.gen
      * 
      */
     public ObjectFactory() {
@@ -89,12 +90,14 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UserFaultType }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserFaultType
+     * }{@code >}
      * 
      * @param value
-     *     Java instance representing xml element's value.
+     *              Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link UserFaultType }{@code >}
+     *         the new instance of {@link JAXBElement }{@code <}{@link UserFaultType
+     *         }{@code >}
      */
     @XmlElementDecl(namespace = "http://inventory-management-system.com/user-management", name = "userFault")
     public JAXBElement<UserFaultType> createUserFault(UserFaultType value) {
